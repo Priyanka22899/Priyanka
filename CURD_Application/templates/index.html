@@ -3,11 +3,12 @@
     <title>CRUD Application</title>
 
     <link href="{{url_for('static', filename = 'css/bootstrap.min.css')}}" rel="stylesheet">
-
-
 </head>
+
 <body>
+
 <div class="container">
+
     <div class="well text-center">
         <h1>Employee List</h1>
     </div>
@@ -23,8 +24,8 @@
                         <th>Gender</th>
                         <th>Address</th>
                         <th>Join Date</th>
-
                     </tr>
+
                     {% for row in employee %}
                     <tr>
                         <th>{{row.0}}</th>
@@ -37,6 +38,7 @@
                             <a href="/delete/{{row.0}}" class="btn btn-danger btn-xs"  onclick="return confirm('Are you sure to delete?')">Delete</a>
                         </td>
                     </tr>
+
                     <div id="modaledit" class="modal fade" role="dialog">
         <div class="modal-dialog">
              <div class="modal-content">
@@ -45,10 +47,10 @@
                     <h4 class="modal-title">Update Data</h4>
                 </div>
              <div class="modal-body">
-             <form action="" method="POST">
+             <form action="{{url_for('update')}}" method="POST">
                     <div class="form-group">
                         <label>Name:</label>
-                        <input type="text" class="form-control" name="name" required="1" value="{{row.1}}">
+                        <input type="text" class="form-control" name="name" required="1">
                     </div>
 
                     <div class="form-group">
@@ -73,22 +75,18 @@
                         <button class="btn btn-primary" type="submit">Update</button>
                     </div>
             </form>
-         </div>
+             </div>
                  <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                  </div>
          </div>
        </div>
-    </div>
-
-
-
+                    </div>
                     {% endfor %}
                 </table>
             </div>
         </div>
     </div>
-
 
 
 
