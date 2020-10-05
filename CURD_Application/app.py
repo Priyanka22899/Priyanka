@@ -37,13 +37,13 @@ def insert():
 @app.route('/update', methods=['POST', 'GET'])
 def update():
     if request.method == 'POST':
+        id_data=request.form['id']
         name = request.form['name']
         gender = request.form['gender']
         address = request.form['address']
         date = request.form['date']
         cur = mysql.connection.cursor()
-        cur.execute("""UPDATE employee SET Name=%s,Gender=%s,Address=%s,JOINT Date=%s WHERE id=%s""",
-                    (name, gender, address, date))
+        cur.execute("""UPDATE employee SET Name=%s,Gender=%s,Address=%s,JoinDate=%s WHERE id=%s""", (name, gender, address, date,id_data))
         mysql.connection.commit()
         return redirect(url_for("index"))
 
